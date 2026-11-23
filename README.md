@@ -1,6 +1,6 @@
 # text-tools
 
-C++17 Unix filters: `html2txt`, `breakout`, and `utf8rm`.
+C++17 Unix tools: `html2txt`, `breakout`, `utf8rm`, and `splitter`.
 
 ```bash
 cmake -B build -S .
@@ -57,5 +57,18 @@ utf8rm dirty.txt out.txt    # file -> file
 ```
 
 A dash for `IN` or `OUT` is stdin or stdout.
+
+## splitter
+
+Writes a sequence of files, each holding at most `LINES` lines. The first file is `0000000000.dat`, then `0000000001.dat`, and so on. The last file may be shorter. A line ends at a newline. A final partial line is kept. Bytes are copied unchanged.
+
+```bash
+splitter 1000                    # stdin -> ./0000000000.dat, ...
+splitter 1000 in.txt             # file -> current directory
+splitter 1000 in.txt outdir      # file -> outdir
+splitter 1000 - outdir           # stdin -> outdir
+```
+
+A dash for `IN` is stdin. `DIR` defaults to the current directory and is created when missing. `LINES` is a positive integer. An empty input writes no files. A file already named for a chunk is replaced. Other files in `DIR` are left in place.
 
 License is CC0 1.0.
