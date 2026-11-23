@@ -15,6 +15,9 @@ target_include_directories(breakout PRIVATE src)
 add_executable(utf8rm src/utf8rm.cpp src/ascii.cpp)
 target_include_directories(utf8rm PRIVATE src)
 
+add_executable(binrm src/binrm.cpp src/binary.cpp)
+target_include_directories(binrm PRIVATE src)
+
 add_executable(splitter src/splitter.cpp src/chunk.cpp)
 target_include_directories(splitter PRIVATE src)
 
@@ -27,6 +30,9 @@ target_include_directories(breakout_tests PRIVATE src)
 add_executable(utf8rm_tests tests/test_utf8rm.cpp src/ascii.cpp)
 target_include_directories(utf8rm_tests PRIVATE src)
 
+add_executable(binrm_tests tests/test_binrm.cpp src/binary.cpp)
+target_include_directories(binrm_tests PRIVATE src)
+
 add_executable(splitter_tests tests/test_splitter.cpp src/chunk.cpp)
 target_include_directories(splitter_tests PRIVATE src)
 
@@ -34,4 +40,5 @@ enable_testing()
 add_test(NAME extract COMMAND html2txt_tests)
 add_test(NAME split COMMAND breakout_tests)
 add_test(NAME ascii COMMAND utf8rm_tests)
+add_test(NAME binary COMMAND binrm_tests)
 add_test(NAME chunk COMMAND splitter_tests)

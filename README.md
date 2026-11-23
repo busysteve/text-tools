@@ -1,6 +1,6 @@
 # text-tools
 
-C++17 Unix tools: `html2txt`, `breakout`, `utf8rm`, and `splitter`.
+C++17 Unix tools: `html2txt`, `breakout`, `utf8rm`, `binrm`, and `splitter`.
 
 ```bash
 cmake -B build -S .
@@ -54,6 +54,18 @@ Writes ASCII. It reads UTF-8 and drops each non-ASCII character. Ill-formed byte
 utf8rm                      # stdin -> stdout
 utf8rm dirty.txt            # file -> stdout
 utf8rm dirty.txt out.txt    # file -> file
+```
+
+A dash for `IN` or `OUT` is stdin or stdout.
+
+## binrm
+
+Writes ASCII text. It drops binary bytes. Carriage return, line feed, whitespace, and printable ASCII are kept.
+
+```bash
+binrm                       # stdin -> stdout
+binrm dirty.bin             # file -> stdout
+binrm dirty.bin out.txt     # file -> file
 ```
 
 A dash for `IN` or `OUT` is stdin or stdout.
